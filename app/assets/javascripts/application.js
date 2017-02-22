@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(function(){
+    
+    var txtUsername=$("#user_username");
+
+    txtUsername.on('keypress',function(evt){
+        if(evt.which==32){
+            evt.preventDefault();
+        }
+    });
+});
