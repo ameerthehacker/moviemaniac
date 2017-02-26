@@ -7,7 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container-fluid">
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <navbar-header><a href="" class="navbar-brand">Movie Maniac</a></navbar-header>
+  <div class="container-fluid">
+    <ul class="navbar-nav nav pull-right">
+      <li><a href="">Link 1</a></li>
+      <li><a href="">Link 2</a></li>
+      <li><a href="">Link 3</a></li>
+    </ul>
+  </div>
+</div>
+<div class="container">
   <%= yield %>
 </div>
 </body>
