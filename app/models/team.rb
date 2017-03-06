@@ -17,7 +17,9 @@ class Team < ActiveRecord::Base
         users.each do |user|
             team_member=self.team_members.build
             team_member.username=user
-            team_member.save
+            unless team_member.user.nil?
+                team_member.save
+            end
         end  
     end
     

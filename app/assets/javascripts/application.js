@@ -16,7 +16,7 @@
 //= require_tree .
 
 
-$(function(){
+$(document).on('turbolinks:load', function(){
     
     var txtUsername=$("#user_username");
 
@@ -25,4 +25,5 @@ $(function(){
             evt.preventDefault();
         }
     });
+
 });

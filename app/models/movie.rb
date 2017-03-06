@@ -7,6 +7,7 @@ class Movie < ActiveRecord::Base
     validates :concept, :presence=>true #, :length=>{ :maximum=>50, :minimum=>20 }
     validates :casts, :presence=>true
     validates :teams, :presence=>true
+    validates :youtube_link, :presence=>true    
     validates_associated :teams         
     validates_associated :casts
 

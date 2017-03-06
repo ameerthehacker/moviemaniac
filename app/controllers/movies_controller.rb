@@ -1,8 +1,13 @@
 class MoviesController < ApplicationController
     before_action :set_movie, :only=>[:edit, :update]
 
+    def index 
+        @movies=Movie.all.order_by("created_at DESC")
+    end
     def new
         @movie=Movie.new
+        @movie.casts.build
+        @movie.teams.build        
     end
     def edit
     end
@@ -11,6 +16,14 @@ class MoviesController < ApplicationController
             redirect_to root_path
         else
             render :edit
+        end
+    end
+    def create
+        @movie = Movie.new(get_params)
+        if @movie.save
+            redirect_to root_path
+        else
+            render :new
         end
     end
 
