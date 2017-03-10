@@ -1,8 +1,10 @@
 class MoviesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_movie, :only=>[:edit, :update]
 
     def index 
-        @movies=Movie.all.order_by("created_at DESC")
+        @movies=Movie.all.order("created_at DESC")
+        
     end
     def new
         @movie=Movie.new
@@ -20,6 +22,7 @@ class MoviesController < ApplicationController
     end
     def create
         @movie = Movie.new(get_params)
+        @movie.user=current_user
         if @movie.save
             redirect_to root_path
         else

@@ -4,6 +4,7 @@ class CreateMovies < ActiveRecord::Migration
       t.string :title
       t.text :concept
       t.string :youtube_link
+      t.references :user
       t.timestamps null: false
     end
   end

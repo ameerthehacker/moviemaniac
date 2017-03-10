@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :casts, :dependent=>:delete_all
   has_many :teams, :dependent=>:delete_all
   has_many :movies, :dependent=>:delete_all
+  has_many :comments, :dependent=>:delete_all
 
   validates :username, :uniqueness=>true, :presence=>true, :length=>{ :maximum=>15, :minimum=>6 }
   validate :username_without_space

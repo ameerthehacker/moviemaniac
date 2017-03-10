@@ -1,0 +1,20 @@
+<div class="comment" id="comment_<%= comment.id %>">
+    <div class="row">
+        <div class="user col-lg-3">
+            <h4><%= link_to comment.user.username, user_profile_path(comment.user.username) %></h4>
+        </div>
+    </div>
+    <div class="content">
+        <p><%= comment.comment %></p>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <% if comment.user == current_user  %>
+                <%= link_to 'Edit', edit_movie_comment_path(comment.movie, comment), :class=>'btn btn-xs btn-warning' %>
+                <%= link_to 'Delete', movie_comment_path(comment.movie, comment), :remote=>true, :class=>'btn btn-xs btn-danger', :data=>{ :method=>'delete', :confirm=>'Are you sure to delete this comment' } %>
+            <% elsif comment.movie.user == current_user %>
+                <%= link_to 'Delete', movie_comment_path(comment.movie, comment), :class=>'btn btn-xs btn-danger', :data=>{ :method=>'delete', :confirm=>'Are you sure to delete this comment' } %>
+            <% end %>
+        </div>
+    </div>
+</div>

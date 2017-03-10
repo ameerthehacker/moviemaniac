@@ -1,0 +1,6 @@
+<% if @comment.new_record? %>
+    $("#errors").html("<%= j render 'shared/errors', :obj=>@comment %>");
+<% else %>
+    $(".comments").append("<%= j render @comment %>")
+    $("#comment_comment").val("");
+<% end %>

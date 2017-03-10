@@ -6,4 +6,8 @@ module ApplicationHelper
         end
         link_to name, '#', :class=>'btn btn-xs btn-success btn-add-' + association.to_s.singularize, :data=>{ :fields=>fields.gsub("\n", "") }
     end
+    def avatar_url(user)
+        gravatar_id=Digest::MD5.hexdigest(user.email.downcase)
+        "http://gravatar.com/avatar/#{gravatar_id}.png"
+    end
 end

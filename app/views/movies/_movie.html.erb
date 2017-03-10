@@ -1,0 +1,42 @@
+<div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <%= movie.title %>
+        </div>
+        <div class="panel-body">
+            <iframe width="100%" height="380" src="<%= movie.youtube_link %>" frameborder="0" allowfullscreen></iframe>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Casts
+                </div>
+                <div class="panel-body">
+                    <% movie.casts.each do |cast| %>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <%= image_tag avatar_url(cast.user), :width => 48, :height => 48 %>
+                            </div>
+                            <div class="col-lg-3">
+                                <%= link_to cast.user.username, user_profile_path(cast.user.username) %>
+                            </div>
+                            <div class="col-lg-3">
+                                AS
+                            </div>
+                            <div class="col-lg-3">
+                                <%= cast.as %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <h4 class="page-header">Comments</h4>
+            <div class="comments">
+                <% unless movie.comments.count==0 %>
+                    <%= render movie.comments %>                    
+                <% end %>
+            </div>
+            <div class="comment-form">
+                <%= render 'comments/form', :@movie=>movie, :@comment=>movie.comments.build %>             
+            </div>
+        </div>
+    </div>
+</div>
