@@ -1,0 +1,4 @@
+var btnFollowUser=$("#btn_follow_user_<%= @user.id %>");
+btnFollowUser.text('Unfollow');
+btnFollowUser.attr('class','btn btn-xs btn-danger');
+btnFollowUser.attr('href',"<%= user_unfollow_path(@user) %>");

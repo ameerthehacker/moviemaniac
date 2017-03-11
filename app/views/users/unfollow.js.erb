@@ -1,0 +1,4 @@
+var btnFollowUser=$("#btn_follow_user_<%= @user.id %>");
+btnFollowUser.text('Follow');
+btnFollowUser.attr('class','btn btn-xs btn-success');
+btnFollowUser.attr('href',"<%= user_follow_path(@user) %>");

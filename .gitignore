@@ -16,3 +16,4 @@
 !/log/.keep
 /tmp
 /.vscode
+/.byebug_history

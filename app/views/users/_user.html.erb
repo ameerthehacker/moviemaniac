@@ -1,0 +1,16 @@
+<div class="user">
+    <div class="img-user">
+        <%= image_tag(avatar_url(user), :class=>'img-responsive img-circle') %>        
+    </div>
+    <div class="user-details">
+        <h4><%= link_to user.username, user_profile_path(user.username) %> </h4>      
+        <% if user.followers.where(current_user.id).count==0 %>
+            <%= link_to 'Follow', user_follow_path(user.id), :remote=>true, :id=>"btn_follow_user_#{user.id}" ,:class=>'btn btn-xs btn-success' %>
+        <% else %>
+             <%= link_to 'Unfollow', user_unfollow_path(user.id), :remote=>true, :id=>"btn_follow_user_#{user.id}" ,:class=>'btn btn-xs btn-danger' %>
+        <% end %>
+    </div>
+</div>
+
+
+
