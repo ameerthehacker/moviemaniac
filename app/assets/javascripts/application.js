@@ -25,5 +25,6 @@ $(document).on('turbolinks:load', function(){
             evt.preventDefault();
         }
     });
+   $('[data-toggle="popover"]').popover(); 
 
 });

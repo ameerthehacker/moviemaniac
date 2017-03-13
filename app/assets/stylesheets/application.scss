@@ -20,3 +20,21 @@
 body{
     margin-top: 60px;
 }
+
+.users{
+    .user{
+        .img-user{
+            position: absolute;
+        }
+        background: #ecf0f1;
+        border-radius: 5px;
+        padding:5px;
+        margin-top:5px;
+        height:90px;
+        display: block;
+        .user-details{
+            margin-left: 90px;
+        }
+    }
+    padding-bottom: 5px;
+}

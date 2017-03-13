@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311054438) do
+ActiveRecord::Schema.define(version: 20170313062401) do
 
   create_table "casts", force: :cascade do |t|
     t.integer  "movie_id",   limit: 4
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170311054438) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "followers", id: false, force: :cascade do |t|
+  create_table "followings", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "follower_id", limit: 4
     t.datetime "created_at",            null: false
