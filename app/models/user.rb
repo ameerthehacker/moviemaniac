@@ -8,12 +8,16 @@ class User < ActiveRecord::Base
   has_many :followers, :through => :followings
 
   validates :username, :uniqueness=>true, :presence=>true, :length=>{ :maximum=>15, :minimum=>6 }
+  validates :first_name, :presence=>true
   validate :username_without_space
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatables
-
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+private
   def username_without_space
     if((username.scan(" ")).count> 0)
       errors.add(:username,"cant contain whitespaces")

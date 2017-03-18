@@ -1,7 +1,13 @@
 class CommentsController < ApplicationController
-    before_action :set_movie, :only=>[:create, :edit, :update, :destroy]
+    before_action :set_movie, :only=>[:index, :create, :edit, :update, :destroy]
     before_action :set_comment, :only=>[:edit, :update, :destroy]
 
+    def index
+        @comments=@movie.comments.order('created_at DESC')
+        respond_to do |format|
+            format.js
+        end
+    end
     def create
         @comment=@movie.comments.new(get_params)
         @comment.user=current_user

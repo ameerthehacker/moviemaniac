@@ -4,6 +4,8 @@
 $(document).on('turbolinks:load', function () {
 
     var frmMovie = $("#frm-movie");
+    var btnShowAllComments = $("#btn-show-all-comments");
+    var modalCommentsBody = $("#modal-comments-body");
     frmMovie.on('click', '.btn-remove-cast', function (evt) {
         evt.preventDefault();
         $(this).prev("input[type=hidden]").val("1");
@@ -21,5 +23,8 @@ $(document).on('turbolinks:load', function () {
     frmMovie.on('click', '.btn-add-team', function (evt) {
         evt.preventDefault();
         $(".teams").append("<div class='team'>" + $(this).attr('data-fields') + "</div>");
+    });
+    btnShowAllComments.on('click', function (evt){
+        modalCommentsBody.text("Loading...");
     });
 });

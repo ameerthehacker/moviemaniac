@@ -3,9 +3,16 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       ## Database authenticatable
       t.string :username
+      t.string :first_name
+      t.string :last_name
       t.string :email,              null: false, default: ""      
+      t.string :mobile
+      t.string :facebook_link
+      t.string :twitter_link      
+      t.string :instagram_link                  
       t.string :gender
       t.integer :age
+      t.string :avatar_url
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
