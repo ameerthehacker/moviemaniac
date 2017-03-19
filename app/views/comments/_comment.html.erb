@@ -1,15 +1,20 @@
 <div class="comment" id="comment_<%= comment.id %>">
     <div class="row">
-        <div class="user col-lg-3">
-            <h5><%= link_to comment.user.full_name, user_profile_path(comment.user.username) %></h5>
+        <div class="comment-body">
+            <div class="col-md-1">
+                <%= image_tag comment.user.decorate.avatar, :width => 48, :height => 48, :class=>'img-circle' %>   
+            </div>
+            <div class="col-md-11">
+                <h5><%= link_to comment.user.full_name, user_profile_path(comment.user.username) %></h5>
+                <div class="content">
+                    <p><%= comment.comment %></p>
+                    <div class="comment-time pull-right"> <%= time_ago_in_words comment.updated_at %> ago </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="content">
-        <p><%= comment.comment %></p>
-        <div class="comment-time pull-right"> <%= time_ago_in_words comment.updated_at %> ago </div>
-    </div>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-md-3">
             <% if comment.user == current_user  %>
                 <%= link_to 'Edit', edit_movie_comment_path(comment.movie, comment), :class=>'btn btn-xs btn-warning' %>
                 <%= link_to 'Delete', movie_comment_path(comment.movie, comment), :remote=>true, :title=>'Hello!', :class=>'btn btn-xs btn-danger', :data=>{ :method=>'delete', :confirm=>'Are you sure to delete this comment' } %>

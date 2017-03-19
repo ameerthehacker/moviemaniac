@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-    before_action :set_user, :only=>[:follow,:unfollow]
+    before_action :set_user, :only=>[:follow, :unfollow, :update_avatar]
 
     def show 
-        @user=User.find_by_username(params[:username])
+        @user=User.find_by_username(params[:username]).decorate
     end
     def search
         @users=User.where('(users.username LIKE ? OR users.email LIKE ?) AND users.username <> ?', "#{params[:search_term]}%", "#{params[:search_term]}%", current_user.username)
@@ -25,6 +25,13 @@ class UsersController < ApplicationController
         @followings=Following.where(:follower_id=>@user.id)
         
     end
+    def update_avatar
+        @user.avatar_url = params[:avatar_url]
+        if @user.save
+            respond_to :js
+        end
+    end
+
 private
     def set_params
         params.pemit(:search_term)

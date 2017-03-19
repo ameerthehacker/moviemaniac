@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get '/users/:user_id/follow', :to=>'users#follow', :as => :user_follow
   # unfollow a user
   get '/users/:user_id/unfollow', :to=>'users#unfollow', :as => :user_unfollow
+  post '/users/:user_id/update_avatar', :to=>'users#update_avatar', :as => :user_avatar_update
   
 end

@@ -14,9 +14,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatables
+
+  mount_uploader :avatar_url, UserAvatarUploader
   def full_name
     "#{first_name} #{last_name}"
   end
+
 private
   def username_without_space
     if((username.scan(" ")).count> 0)

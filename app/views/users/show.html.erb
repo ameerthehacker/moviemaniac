@@ -1,1 +1,37 @@
-<%= @user.username %>
+<div class="user">
+    <div class="cover-image">
+        <div class="details">
+            <div class="name">
+                <h3><%= @user.full_name %></h3>
+            </div>        
+            <div class="username">
+                <h5>@<%= @user.username %></h5>
+            </div> 
+        </div>
+        <div class="avatar">
+            <%= image_tag @user.avatar, :class=>'img-responsive img-circle' %>    
+        </div>
+        <div class="avatar-overlay">
+           <div class="black-overlay">
+                <a href="">Change</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Update Avatar</h4>
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <%= form_tag user_avatar_update_path(@user), :remote=>true do %>
+                    <%= file_field_tag :avatar_url %>
+                    <%= submit_tag :change %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

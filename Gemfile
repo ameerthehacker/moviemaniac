@@ -29,7 +29,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+# Gem to manage uploaded images
+gem 'carrierwave', '~> 1.0'
+# Gem to make image upload with AJAX
+gem 'remotipart', '~> 1.3', '>= 1.3.1'
+# Gem for easy presentation of user info
+gem 'draper', '~> 2.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
